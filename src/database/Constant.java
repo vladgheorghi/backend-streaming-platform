@@ -1,5 +1,7 @@
 package database;
 
+import java.util.ArrayList;
+
 /**
  * @class class for constant data
  * @details change constants here if needed
@@ -33,8 +35,12 @@ public final class Constant {
     public static final String RATE = "rate";
     public static final String BUY_PREMIUM_ACCOUNT = "buy premium account";
     public static final String BUY_TOKENS = "buy tokens";
+
+    /**  */
     public static final String ADD_MOVIE = "add";
     public static final String DELETE_MOVIE = "delete";
+
+    public static final String DATABASE_ACTIONS[] = new String[]{"add", "delete"};
 
     /** ACCOUNT TYPES */
     public static final String ACCOUNT_STANDARD = "standard";

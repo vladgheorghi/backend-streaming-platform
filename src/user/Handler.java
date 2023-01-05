@@ -18,7 +18,9 @@ public class Handler {
     private Page currentPage; /** current page that the user is on */
     private Action currentAction; /** current action that the user does */
     private ArrayList<Movie> currentMovieList; /** current movie list that the user sees */
-    private ArrayList<String> previousPages = new ArrayList<>();
+    private ArrayList<String> previousPages = new ArrayList<>(); /** previous accessed pages */
+    private ArrayList<Movie> seeDetailsQueue = new ArrayList<>(); /** memorises the previous see
+     details movies in case 'back' action is called */
 
     /** Setters */
     public final void setCurrentUser(final User currentUser) {
@@ -36,6 +38,9 @@ public class Handler {
     public void setPreviousPages(ArrayList<String> previousPages) {
         this.previousPages = previousPages;
     }
+    public void setSeeDetailsQueue(ArrayList<Movie> seeDetailsQueue) {
+        this.seeDetailsQueue = seeDetailsQueue;
+    }
 
     /** Getters */
     public final User getCurrentUser() {
@@ -52,6 +57,9 @@ public class Handler {
     }
     public ArrayList<String> getPreviousPages() {
         return previousPages;
+    }
+    public ArrayList<Movie> getSeeDetailsQueue() {
+        return seeDetailsQueue;
     }
 
     public Handler(final User currentUser, final Page currentPage, final Action currentAction,

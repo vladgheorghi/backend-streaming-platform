@@ -37,6 +37,7 @@ public class ActionHandler {
                 break;
             case DATABASE:
                 DatabaseActions.databaseAction(mainDatabase, handler, output, objectMapper);
+                break;
             case BACK:
                 if (handler.getPreviousPages().size() == 0) {
                     output.add(OutputHandler.outputHandler(handler, true, objectMapper));
@@ -45,6 +46,7 @@ public class ActionHandler {
 
                 int nrPrevPages = handler.getPreviousPages().size();
                 String nextPageName = handler.getPreviousPages().get(nrPrevPages - 1);
+
                 handler.getPreviousPages().remove(nrPrevPages - 1);
                 Page backPage = mainDatabase.getPageMap().get(nextPageName);
 

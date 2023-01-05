@@ -1,37 +1,23 @@
-package page.pageList;
+package page.pagelist;
 
 import page.Page;
+import page.createpage.VisitorCreatePage;
+import page.initnextpages.VisitorInitNextPages;
 
-import java.util.ArrayList;
 import java.util.Map;
-
-import static database.Constant.LOGOUT_PAGE;
-import static database.Constant.HOMEPAGE_UNLOGGED;
 
 /**
  * @class class for creating the Homepage Logout page
  * */
 
-public class PageLogout {
-    /**
-     * @return the created page
-     * */
-    public static Page createPage() {
-        Page pageLogout = new Page();
-
-        pageLogout.setName(LOGOUT_PAGE);
-        pageLogout.setFeatures(new ArrayList<>());
-
-        return pageLogout;
+public class PageLogout extends Page {
+    @Override
+    public void accept(VisitorCreatePage visitor) {
+        visitor.createPage(this);
     }
 
-    /**
-     * initialize the next pages list
-     * */
-    public static void initNextPages(final Map<String, Page> pageMap) {
-        ArrayList<Page> nextPages = new ArrayList<>();
-        nextPages.add(pageMap.get(HOMEPAGE_UNLOGGED));
-
-        pageMap.get(LOGOUT_PAGE).setNextPages(nextPages);
+    @Override
+    public void accept(VisitorInitNextPages visitor, Map<String, Page> pageMap) {
+        visitor.initNextPages(this, pageMap);
     }
 }

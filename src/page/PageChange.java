@@ -39,6 +39,10 @@ public final class PageChange {
         if (handler.getCurrentPage().getNextPages().contains(nextPage) || back) {
             if (handler.getCurrentUser() != null && !back) {
                 handler.getPreviousPages().add(handler.getCurrentPage().getName());
+
+                if (handler.getCurrentPage().getName().equals(SEE_DETAILS_PAGE)) {
+                    handler.getSeeDetailsQueue().add(handler.getCurrentMovieList().get(0));
+                }
             }
 
             // handle the 'see details' case
@@ -49,8 +53,9 @@ public final class PageChange {
 
             handler.setCurrentPage(nextPage);
 
+            String currentPageName = handler.getCurrentPage().getName();
             // handle the 'logout' case
-            if (handler.getCurrentPage().getName().equals(LOGOUT_PAGE)) {
+            if (currentPageName.equals(LOGOUT_PAGE)) {
                 // reset current user and current movie list and changes page to unlogged homepage
                 handler.setCurrentUser(null);
                 handler.setCurrentMovieList(new ArrayList<>());
@@ -59,7 +64,6 @@ public final class PageChange {
                 return;
             }
 
-            String currentPageName = handler.getCurrentPage().getName();
             // if next page is 'Movies', a movie list should be changed inside handler
             if (currentPageName.equals(MOVIES_PAGE)) {
                 GetMovie.getMovies(mainDatabase, handler);

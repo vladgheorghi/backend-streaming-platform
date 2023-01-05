@@ -1,13 +1,15 @@
 package page;
 
-import page.pageList.PageRegister;
-import page.pageList.PageLogin;
-import page.pageList.PageLogout;
-import page.pageList.PageMovies;
-import page.pageList.PageUpgrades;
-import page.pageList.PageSeeDetails;
-import page.pageList.HomepageLogged;
-import page.pageList.HomepageUnlogged;
+import page.createpage.CreatePage;
+import page.initnextpages.InitNextPages;
+import page.pagelist.PageRegister;
+import page.pagelist.PageLogin;
+import page.pagelist.PageLogout;
+import page.pagelist.PageMovies;
+import page.pagelist.PageUpgrades;
+import page.pagelist.PageSeeDetails;
+import page.pagelist.HomepageLogged;
+import page.pagelist.HomepageUnlogged;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,25 +35,28 @@ public class PageInitialization {
     public static PageDatabase initializePageSystem() {
         Map<String, Page> pageMap = new HashMap<>();
 
+        CreatePage visitorCreatePage = new CreatePage();
+
         // creates all pages and puts them inside the page map
-        pageMap.put(HOMEPAGE_UNLOGGED, HomepageUnlogged.createPage());
-        pageMap.put(LOGIN_PAGE, PageLogin.createPage());
-        pageMap.put(REGISTER_PAGE, PageRegister.createPage());
-        pageMap.put(HOMEPAGE_LOGGED, HomepageLogged.createPage());
-        pageMap.put(LOGOUT_PAGE, PageLogout.createPage());
-        pageMap.put(MOVIES_PAGE, PageMovies.createPage());
-        pageMap.put(SEE_DETAILS_PAGE, PageSeeDetails.createPage());
-        pageMap.put(UPGRADES_PAGE, PageUpgrades.createPage());
+        pageMap.put(HOMEPAGE_UNLOGGED, new HomepageUnlogged());
+        pageMap.put(LOGIN_PAGE, new PageLogin());
+        pageMap.put(REGISTER_PAGE, new PageRegister());
+        pageMap.put(HOMEPAGE_LOGGED, new HomepageLogged());
+        pageMap.put(LOGOUT_PAGE, new PageLogout());
+        pageMap.put(MOVIES_PAGE, new PageMovies());
+        pageMap.put(SEE_DETAILS_PAGE, new PageSeeDetails());
+        pageMap.put(UPGRADES_PAGE, new PageUpgrades());
+
+        for (Map.Entry<String, Page> entry : pageMap.entrySet()) {
+            entry.getValue().accept(visitorCreatePage);
+        }
 
         // initialize the next page list for all pages
-        HomepageUnlogged.initNextPages(pageMap);
-        PageLogin.initNextPages(pageMap);
-        PageRegister.initNextPages(pageMap);
-        HomepageLogged.initNextPages(pageMap);
-        PageLogout.initNextPages(pageMap);
-        PageMovies.initNextPages(pageMap);
-        PageSeeDetails.initNextPages(pageMap);
-        PageUpgrades.initNextPages(pageMap);
+        InitNextPages visitorInitNextPages = new InitNextPages();
+
+        for (Map.Entry<String, Page> entry : pageMap.entrySet()) {
+            entry.getValue().accept(visitorInitNextPages, pageMap);
+        }
 
         return PageDatabase.getInstance(pageMap);
     }

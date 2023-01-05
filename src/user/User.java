@@ -3,6 +3,8 @@ package user;
 import movie.Movie;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static database.Constant.FREE_PREMIUM_MOVIES;
 
@@ -21,6 +23,7 @@ public class User {
     private ArrayList<Movie> likedMovies = new ArrayList<>(); /** user liked movie list */
     private ArrayList<Movie> ratedMovies = new ArrayList<>(); /** user rated movie list */
     private ArrayList<Notification> notifications = new ArrayList<>(); /** user notifications */
+    private Map<String, Integer> ratingList = new HashMap<>(); /** user rated movies */
 
     /** Getters */
     public final Credentials getCredentials() {
@@ -50,6 +53,9 @@ public class User {
     public ArrayList<String> getSubscribedGenres() {
         return subscribedGenres;
     }
+    public Map<String, Integer> getRatingList() {
+        return ratingList;
+    }
 
     /** Setters */
     public final void setCredentials(final Credentials credentials) {
@@ -78,5 +84,8 @@ public class User {
     }
     public void setSubscribedGenres(ArrayList<String> subscribedGenres) {
         this.subscribedGenres = subscribedGenres;
+    }
+    public void setRatingList(Map<String, Integer> ratingList) {
+        this.ratingList = ratingList;
     }
 }
