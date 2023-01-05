@@ -56,13 +56,6 @@ public final class GetMovie {
                                   boolean back) {
         ArrayList<Movie> newMovieList = new ArrayList<>();
 
-        if (back) {
-            int seeDetailsQueueSize = handler.getSeeDetailsQueue().size();
-            String movieName = handler.getSeeDetailsQueue().get(seeDetailsQueueSize - 1).getName();
-
-            handler.getCurrentAction().setMovie(movieName);
-        }
-
         // searches for the desired movie in the handler's 'currentMovieList'
         for (Movie movie : handler.getCurrentMovieList()) {
             if (movie.getName().equals(handler.getCurrentAction().getMovie())) {
@@ -76,10 +69,6 @@ public final class GetMovie {
                     // if the movie is banned in the current user's country, outputs an error
                     handler.setCurrentMovieList(newMovieList);
 
-                    /* also removes 'movies' from previous visited pages list because current page
-                       is still 'movies' */
-                    handler.getPreviousPages().remove(handler.getPreviousPages().size() - 1);
-
                     output.add(OutputHandler.outputHandler(handler, true, objectMapper));
                     return;
                 }
@@ -88,15 +77,11 @@ public final class GetMovie {
 
         // if the movie is not found, outputs an error
         if (newMovieList.isEmpty()) {
-            /* also removes 'movies' from previous visited pages list because current page
-               is still 'movies' */
-            handler.getPreviousPages().remove(handler.getPreviousPages().size() - 1);
-
             output.add(OutputHandler.outputHandler(handler, true, objectMapper));
             return;
         }
 
-        /* changes the handler's 'currentMovieList' with the new list and changes page to
+        /* changes the handelr's 'currentMovieList' with the new list and changes page to
         'see details' */
         handler.setCurrentMovieList(newMovieList);
         handler.setCurrentPage(nextPage);

@@ -30,9 +30,4 @@ public class Notification {
         this.movieName = movieName;
         this.message = message;
     }
-
-    public Notification() {
-        this.movieName = null;
-        this.message = null;
-    }
 }

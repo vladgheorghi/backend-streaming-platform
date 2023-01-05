@@ -21,14 +21,14 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import database.Database;
 
 import user.Handler;
-import user.Notification;
-import user.Recommendation;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static database.Constant.*;
+import static database.Constant.HOMEPAGE_UNLOGGED;
+import static database.Constant.CHANGE_PAGE;
+import static database.Constant.ON_PAGE;
 
 public class Main {
     /**@param args -> [0] absolute path of JSON input file
@@ -58,13 +58,6 @@ public class Main {
             handler.setCurrentAction(action);
 
             ActionHandler.handleAction(mainDatabase, handler, output, objectMapper);
-        }
-
-        if (handler.getCurrentUser() != null) {
-            if (handler.getCurrentUser().getCredentials().getAccountType().equals(ACCOUNT_PREMIUM)) {
-                Recommendation.premiumUserRecommend(mainDatabase, handler);
-                output.add(OutputHandler.outputHandler(handler, false, objectMapper));
-            }
         }
 
         // outputs the current object ArrayNode into the output JSON file

@@ -16,7 +16,7 @@ import output.OutputHandler;
 import user.Handler;
 import user.User;
 
-import java.util.*;
+import java.util.ArrayList;
 
 import static database.Constant.HOMEPAGE_LOGGED;
 import static database.Constant.HOMEPAGE_UNLOGGED;
@@ -270,8 +270,9 @@ public final class PageFeatures {
         // adds the movie to the 'watchedMovies' list if not already watched
         if (!handler.getCurrentUser().getWatchedMovies().contains(currentMovie)) {
             handler.getCurrentUser().getWatchedMovies().add(currentMovie);
-            output.add(OutputHandler.outputHandler(handler, false, objectMapper));
         }
+
+        output.add(OutputHandler.outputHandler(handler, false, objectMapper));
     }
 
     /**
@@ -319,6 +320,12 @@ public final class PageFeatures {
             return;
         }
 
+        // if the movie was already rated, outputs error
+        if (handler.getCurrentUser().getRatedMovies().contains(currentMovie)) {
+            output.add(OutputHandler.outputHandler(handler, true, objectMapper));
+            return;
+        }
+
         // if the rating is not within the rating range, outputs error
         if (handler.getCurrentAction().getRate() > MAX_RATE
                 || handler.getCurrentAction().getRate() < MIN_RATE) {
@@ -326,34 +333,15 @@ public final class PageFeatures {
             return;
         }
 
+        // rates the movie and save how many ratings were given to the movie and what ratings
+        currentMovie.setNumRatings(currentMovie.getNumRatings() + 1);
+
         if (currentMovie.getRatingList() == null) {
             currentMovie.setRatingList(new ArrayList<>());
         }
 
-        // if the movie was not rated, adds a new rating, else replaces with the new rating
-        if (!handler.getCurrentUser().getRatedMovies().contains(currentMovie)) {
-            currentMovie.setNumRatings(currentMovie.getNumRatings() + 1);
+        currentMovie.getRatingList().add(handler.getCurrentAction().getRate());
 
-            currentMovie.getRatingList().add(handler.getCurrentAction().getRate());
-            handler.getCurrentUser().getRatingList().put(currentMovie.getName(),
-                    handler.getCurrentAction().getRate());
-
-            handler.getCurrentUser().getRatedMovies().add(currentMovie);
-        } else {
-            int oldRating = handler.getCurrentUser().getRatingList().get(currentMovie.getName());
-
-            for (int i = 0; i < currentMovie.getRatingList().size(); i++) {
-                if (oldRating == currentMovie.getRatingList().get(i)) {
-                    currentMovie.getRatingList().set(i, handler.getCurrentAction().getRate());
-                    break;
-                }
-            }
-
-            handler.getCurrentUser().getRatingList().replace(currentMovie.getName(),
-                    handler.getCurrentAction().getRate());
-        }
-
-        // calculates the new rating of the movie
         double sumRatings = 0;
         for (Integer rating : currentMovie.getRatingList()) {
             sumRatings += rating;
@@ -361,6 +349,8 @@ public final class PageFeatures {
 
         double movieRating = (sumRatings / currentMovie.getNumRatings());
         currentMovie.setRating(movieRating);
+
+        handler.getCurrentUser().getRatedMovies().add(currentMovie);
 
         output.add(OutputHandler.outputHandler(handler, false, objectMapper));
     }

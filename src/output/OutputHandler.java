@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import movie.Movie;
 
 import user.Handler;
-import user.Notification;
 
 /**
  * @class class for handling output
@@ -39,13 +38,6 @@ public final class OutputHandler {
 
         for (Movie movie : handler.getCurrentMovieList()) {
             currentMoviesList.add(Parser.parseMovie(movie, objectMapper));
-        }
-
-        for (Notification notification : handler.getCurrentUser().getNotifications()) {
-            if (notification.getMessage().equals("Recommendation")) {
-                currentMoviesList = null;
-                break;
-            }
         }
         outputNode.set("currentMoviesList", currentMoviesList);
 

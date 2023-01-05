@@ -1,9 +1,6 @@
 package movie;
 
-import user.User;
-
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * @class class for movie data
