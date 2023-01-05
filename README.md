@@ -15,6 +15,13 @@ output for the actions or errors into **JSON objects and arrays** and writes the
 into an output file.
 
 ### <ins> Other details </ins>
+* Used 4 Design Patterns:
+  * **_Singleton_** (classes: `Database`)
+  * **_Factory_** (classes: `Page`, all classes inside `pagelist` package)
+  * **_Observer_** (classes: `AddMovieListener`, `DeleteMovieListener`, `DatabaseListener`,
+  `DatabaseNotificationsService`, `DatabaseActions`)
+  * **_Visitor_** (classes: `CreatePage`, `VisitorCreatePage`, `InitNextPages`, `VisitorInitNextPages`,
+  `Page`, all clases inside `pagelist` package)
 * `args[0]` contains the **absolute path** of the **JSON input file**
 * `args[1]` contains the **JSON output file**
 * `handler` instance from `Handler` class is used for controlling the flow of a
