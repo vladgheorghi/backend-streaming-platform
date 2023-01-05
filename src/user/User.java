@@ -47,13 +47,13 @@ public class User {
     public final ArrayList<Movie> getRatedMovies() {
         return ratedMovies;
     }
-    public ArrayList<Notification> getNotifications() {
+    public final ArrayList<Notification> getNotifications() {
         return notifications;
     }
-    public ArrayList<String> getSubscribedGenres() {
+    public final ArrayList<String> getSubscribedGenres() {
         return subscribedGenres;
     }
-    public Map<String, Integer> getRatingList() {
+    public final Map<String, Integer> getRatingList() {
         return ratingList;
     }
 
@@ -79,13 +79,13 @@ public class User {
     public final void setRatedMovies(final ArrayList<Movie> ratedMovies) {
         this.ratedMovies = ratedMovies;
     }
-    public void setNotifications(ArrayList<Notification> notifications) {
+    public final void setNotifications(final ArrayList<Notification> notifications) {
         this.notifications = notifications;
     }
-    public void setSubscribedGenres(ArrayList<String> subscribedGenres) {
+    public final void setSubscribedGenres(final ArrayList<String> subscribedGenres) {
         this.subscribedGenres = subscribedGenres;
     }
-    public void setRatingList(Map<String, Integer> ratingList) {
+    public final void setRatingList(final Map<String, Integer> ratingList) {
         this.ratingList = ratingList;
     }
 }

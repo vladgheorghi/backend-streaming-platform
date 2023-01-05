@@ -16,7 +16,9 @@ public abstract class Page {
     private ArrayList<String> features = new ArrayList<>(); /** list with features the page has */
     private ArrayList<Page> nextPages; /** list with next pages that can be accessed from page */
 
+    /***/
     public abstract void accept(VisitorCreatePage visitor);
+    /***/
     public abstract void accept(VisitorInitNextPages visitor, Map<String, Page> pageMap);
 
     /** Getters */

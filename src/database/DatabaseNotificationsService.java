@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @class class for giving users a notification
  * */
 
-public class DatabaseNotificationsService {
+public final class DatabaseNotificationsService {
     private final ArrayList<User> notifiedUsers;
 
     public DatabaseNotificationsService() {
@@ -21,7 +21,7 @@ public class DatabaseNotificationsService {
      * @param notification -> the notification that the user will get
      * */
 
-    public void notifyUser(User user, Notification notification) {
+    public void notifyUser(final User user, final Notification notification) {
         user.getNotifications().add(notification);
     }
 

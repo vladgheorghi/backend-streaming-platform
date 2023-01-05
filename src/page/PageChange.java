@@ -34,7 +34,7 @@ public final class PageChange {
      * */
     public static void changePage(final Database mainDatabase, final Handler handler,
                                   final Page nextPage, final ArrayNode output,
-                                  final ObjectMapper objectMapper, boolean back) {
+                                  final ObjectMapper objectMapper, final boolean back) {
         // first the next page is verified that it can be accessed from current page
         if (handler.getCurrentPage().getNextPages().contains(nextPage) || back) {
             if (handler.getCurrentUser() != null && !back) {

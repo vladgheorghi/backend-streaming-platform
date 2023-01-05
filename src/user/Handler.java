@@ -35,10 +35,10 @@ public class Handler {
     public final void setCurrentMovieList(final ArrayList<Movie> currentMovieList) {
         this.currentMovieList = currentMovieList;
     }
-    public void setPreviousPages(ArrayList<String> previousPages) {
+    public final void setPreviousPages(final ArrayList<String> previousPages) {
         this.previousPages = previousPages;
     }
-    public void setSeeDetailsQueue(ArrayList<Movie> seeDetailsQueue) {
+    public final void setSeeDetailsQueue(final ArrayList<Movie> seeDetailsQueue) {
         this.seeDetailsQueue = seeDetailsQueue;
     }
 
@@ -55,10 +55,10 @@ public class Handler {
     public final ArrayList<Movie> getCurrentMovieList() {
         return currentMovieList;
     }
-    public ArrayList<String> getPreviousPages() {
+    public final ArrayList<String> getPreviousPages() {
         return previousPages;
     }
-    public ArrayList<Movie> getSeeDetailsQueue() {
+    public final ArrayList<Movie> getSeeDetailsQueue() {
         return seeDetailsQueue;
     }
 

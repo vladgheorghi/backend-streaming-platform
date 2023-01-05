@@ -15,7 +15,7 @@ import static database.Constant.HOMEPAGE_LOGGED;
 public class InitNextPages implements VisitorInitNextPages {
     /***/
     @Override
-    public void initNextPages(HomepageLogged page, Map<String, Page> pageMap) {
+    public void initNextPages(final HomepageLogged page, final Map<String, Page> pageMap) {
         ArrayList<Page> nextPages = new ArrayList<>();
 
         nextPages.add(pageMap.get(LOGOUT_PAGE));
@@ -26,7 +26,7 @@ public class InitNextPages implements VisitorInitNextPages {
     }
     /***/
     @Override
-    public void initNextPages(HomepageUnlogged page, Map<String, Page> pageMap) {
+    public void initNextPages(final HomepageUnlogged page, final Map<String, Page> pageMap) {
         ArrayList<Page> nextPages = new ArrayList<>();
 
         nextPages.add(pageMap.get(REGISTER_PAGE));
@@ -36,14 +36,14 @@ public class InitNextPages implements VisitorInitNextPages {
     }
     /***/
     @Override
-    public void initNextPages(PageLogin page, Map<String, Page> pageMap) {
+    public void initNextPages(final PageLogin page, final Map<String, Page> pageMap) {
         ArrayList<Page> nextPages = new ArrayList<>();
 
         page.setNextPages(nextPages);
     }
     /***/
     @Override
-    public void initNextPages(PageLogout page, Map<String, Page> pageMap) {
+    public void initNextPages(final PageLogout page, final Map<String, Page> pageMap) {
         ArrayList<Page> nextPages = new ArrayList<>();
 
         nextPages.add(pageMap.get(HOMEPAGE_UNLOGGED));
@@ -52,7 +52,7 @@ public class InitNextPages implements VisitorInitNextPages {
     }
     /***/
     @Override
-    public void initNextPages(PageMovies page, Map<String, Page> pageMap) {
+    public void initNextPages(final PageMovies page, final Map<String, Page> pageMap) {
         ArrayList<Page> nextPages = new ArrayList<>();
 
         nextPages.add(pageMap.get(HOMEPAGE_LOGGED));
@@ -64,14 +64,14 @@ public class InitNextPages implements VisitorInitNextPages {
     }
     /***/
     @Override
-    public void initNextPages(PageRegister page, Map<String, Page> pageMap) {
+    public void initNextPages(final PageRegister page, final Map<String, Page> pageMap) {
         ArrayList<Page> nextPages = new ArrayList<>();
 
         page.setNextPages(nextPages);
     }
     /***/
     @Override
-    public void initNextPages(PageSeeDetails page, Map<String, Page> pageMap) {
+    public void initNextPages(final PageSeeDetails page, final Map<String, Page> pageMap) {
         ArrayList<Page> nextPages = new ArrayList<>();
 
         nextPages.add(pageMap.get(HOMEPAGE_LOGGED));
@@ -83,7 +83,7 @@ public class InitNextPages implements VisitorInitNextPages {
     }
     /***/
     @Override
-    public void initNextPages(PageUpgrades page, Map<String, Page> pageMap) {
+    public void initNextPages(final PageUpgrades page, final Map<String, Page> pageMap) {
         ArrayList<Page> nextPages = new ArrayList<>();
 
         nextPages.add(pageMap.get(HOMEPAGE_LOGGED));

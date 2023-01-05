@@ -10,7 +10,7 @@ import static database.Constant.DELETED_MOVIE;
  * @class class for notifying users for the removal of a new movie to the database
  * @details update() function overrides the function from the interface
  * */
-public class DeleteMovieListener implements DatabaseListener{
+public class DeleteMovieListener implements DatabaseListener {
     /**
      * @param deletedMovie -> movie removed from the database that users will get notified about
      *                 (if they subscribed to a genre from that movie)
@@ -18,7 +18,7 @@ public class DeleteMovieListener implements DatabaseListener{
      * @details notifies the users about the removal of a new movie to the database
      * */
     @Override
-    public void update(Movie deletedMovie, Database mainDatabase) {
+    public void update(final Movie deletedMovie, final Database mainDatabase) {
         DatabaseNotificationsService addNotifications = new DatabaseNotificationsService();
 
         Notification newNotification = new Notification(deletedMovie.getName(), DELETED_MOVIE);

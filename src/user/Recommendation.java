@@ -5,14 +5,10 @@ import movie.GetMovie;
 import movie.Movie;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Recommendation {
-    public static void premiumUserRecommend(Database mainDatabase, Handler handler) {
+    /***/
+    public static void premiumUserRecommend(final Database mainDatabase, final Handler handler) {
         Notification recommend = new Notification();
         recommend.setMessage("Recommendation");
 

@@ -9,8 +9,6 @@ import user.Handler;
 
 import java.util.ArrayList;
 
-import static database.Constant.SEE_DETAILS_PAGE;
-
 /**
  * @class class for returning movie list
  * @details returns a movie list when called based on the page that the user is on
@@ -53,7 +51,7 @@ public final class GetMovie {
      * */
     public static void seeDetails(final Handler handler, final ArrayNode output,
                                   final ObjectMapper objectMapper, final Page nextPage,
-                                  boolean back) {
+                                  final boolean back) {
         ArrayList<Movie> newMovieList = new ArrayList<>();
 
         if (back) {

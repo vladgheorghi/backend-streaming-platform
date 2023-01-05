@@ -5,7 +5,6 @@ import page.pagelist.*;
 import java.util.ArrayList;
 
 import static database.Constant.*;
-import static database.Constant.LOGIN;
 
 /**
  * @class implementations of each function from the interface declarations
@@ -13,19 +12,19 @@ import static database.Constant.LOGIN;
 public class CreatePage implements VisitorCreatePage {
     /***/
     @Override
-    public void createPage(HomepageLogged page) {
+    public void createPage(final HomepageLogged page) {
         page.setName(HOMEPAGE_LOGGED);
         page.setFeatures(new ArrayList<>());
     }
     /***/
     @Override
-    public void createPage(HomepageUnlogged page) {
+    public void createPage(final HomepageUnlogged page) {
         page.setName(HOMEPAGE_UNLOGGED);
         page.setFeatures(new ArrayList<>());
     }
     /***/
     @Override
-    public void createPage(PageLogin page) {
+    public void createPage(final PageLogin page) {
         page.setName(LOGIN_PAGE);
 
         ArrayList<String> features = new ArrayList<>();
@@ -35,13 +34,13 @@ public class CreatePage implements VisitorCreatePage {
     }
     /***/
     @Override
-    public void createPage(PageLogout page) {
+    public void createPage(final PageLogout page) {
         page.setName(LOGOUT_PAGE);
         page.setFeatures(new ArrayList<>());
     }
     /***/
     @Override
-    public void createPage(PageMovies page) {
+    public void createPage(final PageMovies page) {
         page.setName(MOVIES_PAGE);
 
         ArrayList<String> features = new ArrayList<>();
@@ -52,7 +51,7 @@ public class CreatePage implements VisitorCreatePage {
     }
     /***/
     @Override
-    public void createPage(PageRegister page) {
+    public void createPage(final PageRegister page) {
         page.setName(REGISTER_PAGE);
 
         ArrayList<String> features = new ArrayList<>();
@@ -62,7 +61,7 @@ public class CreatePage implements VisitorCreatePage {
     }
     /***/
     @Override
-    public void createPage(PageSeeDetails page) {
+    public void createPage(final PageSeeDetails page) {
         page.setName(SEE_DETAILS_PAGE);
 
         ArrayList<String> features = new ArrayList<>();
@@ -75,7 +74,7 @@ public class CreatePage implements VisitorCreatePage {
     }
     /***/
     @Override
-    public void createPage(PageUpgrades page) {
+    public void createPage(final PageUpgrades page) {
         page.setName(UPGRADES_PAGE);
 
         ArrayList<String> features = new ArrayList<>();

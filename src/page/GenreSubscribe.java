@@ -8,7 +8,9 @@ import user.Handler;
 import static database.Constant.SEE_DETAILS_PAGE;
 
 public class GenreSubscribe {
-    public static void subscribe(Handler handler, ArrayNode output, ObjectMapper objectMapper) {
+    /***/
+    public static void subscribe(final Handler handler, final ArrayNode output,
+                                 final ObjectMapper objectMapper) {
         if (!handler.getCurrentPage().getName().equals(SEE_DETAILS_PAGE)) {
             // outputs error in JSON file if page is not "see details"
             output.add(OutputHandler.outputHandler(handler, true, objectMapper));

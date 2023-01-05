@@ -11,11 +11,25 @@ import page.PageAccessFeature;
 import page.PageChange;
 import user.Handler;
 
-import static database.Constant.*;
+import static database.Constant.CHANGE_PAGE;
+import static database.Constant.ON_PAGE;
+import static database.Constant.DATABASE;
+import static database.Constant.BACK;
+import static database.Constant.SUBSCRIBE;
 
+/**
+ * @class class for handling each action case
+ */
 public class ActionHandler {
-    public static void handleAction(Database mainDatabase, Handler handler,
-                                    ArrayNode output, ObjectMapper objectMapper) {
+
+    /**
+     * @param mainDatabase -> main database with all the data
+     * @param handler -> main handler (has current user, action etc.)
+     * @param output -> node that contains all nodes in the output JSON folder
+     * @param objectMapper -> main object mapper for creating JSON nodes and arrays
+     */
+    public static void handleAction(final Database mainDatabase, final Handler handler,
+                                    final ArrayNode output, final ObjectMapper objectMapper) {
         switch (handler.getCurrentAction().getType()) {
             case CHANGE_PAGE: // change page if possible
                 Page nextPage = mainDatabase.getPageMap().get(handler.getCurrentAction().getPage());
@@ -23,7 +37,8 @@ public class ActionHandler {
                 PageChange.changePage(mainDatabase, handler, nextPage, output, objectMapper, false);
                 break;
             case ON_PAGE: // applies a feature on the current page
-                if (handler.getCurrentPage().getFeatures().contains(handler.getCurrentAction().getFeature())) {
+                if (handler.getCurrentPage().getFeatures()
+                        .contains(handler.getCurrentAction().getFeature())) {
                     PageAccessFeature.accessPageFeature(mainDatabase,
                             handler, output, objectMapper);
                     return;

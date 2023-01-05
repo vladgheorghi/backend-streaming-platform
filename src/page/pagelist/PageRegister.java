@@ -11,13 +11,14 @@ import java.util.Map;
  * */
 
 public class PageRegister extends Page {
+    /***/
     @Override
-    public void accept(VisitorCreatePage visitor) {
+    public void accept(final VisitorCreatePage visitor) {
         visitor.createPage(this);
     }
-
+    /***/
     @Override
-    public void accept(VisitorInitNextPages visitor, Map<String, Page> pageMap) {
+    public void accept(final VisitorInitNextPages visitor, final Map<String, Page> pageMap) {
         visitor.initNextPages(this, pageMap);
     }
 }

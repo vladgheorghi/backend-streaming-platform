@@ -51,13 +51,13 @@ public class Action {
     public final int getRate() {
         return rate;
     }
-    public String getSubscribedGenre() {
+    public final String getSubscribedGenre() {
         return subscribedGenre;
     }
-    public Movie getAddedMovie() {
+    public final Movie getAddedMovie() {
         return addedMovie;
     }
-    public String getDeletedMovie() {
+    public final String getDeletedMovie() {
         return deletedMovie;
     }
 
@@ -89,13 +89,13 @@ public class Action {
     public final void setRate(final int rate) {
         this.rate = rate;
     }
-    public void setSubscribedGenre(String subscribedGenre) {
+    public final void setSubscribedGenre(final String subscribedGenre) {
         this.subscribedGenre = subscribedGenre;
     }
-    public void setAddedMovie(Movie addedMovie) {
+    public final void setAddedMovie(final Movie addedMovie) {
         this.addedMovie = addedMovie;
     }
-    public void setDeletedMovie(String deletedMovie) {
+    public final void setDeletedMovie(final String deletedMovie) {
         this.deletedMovie = deletedMovie;
     }
 }

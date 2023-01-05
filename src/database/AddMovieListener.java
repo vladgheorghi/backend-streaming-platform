@@ -10,8 +10,7 @@ import static database.Constant.ADDED_MOVIE;
  * @class class for notifying users for the addition of a new movie to the database
  * @details update() function overrides the function from the interface
  * */
-
-public class AddMovieListener implements DatabaseListener{
+public class AddMovieListener implements DatabaseListener {
     /**
      * @param newMovie -> movie added to the database that users will get notified about
      *                 (if they subscribed to a genre from that movie)
@@ -19,7 +18,7 @@ public class AddMovieListener implements DatabaseListener{
      * @details notifies the users about the addition of a new movie to the database
      * */
     @Override
-    public void update(Movie newMovie, Database mainDatabase) {
+    public void update(final Movie newMovie, final Database mainDatabase) {
         DatabaseNotificationsService addNotifications = new DatabaseNotificationsService();
 
         Notification newNotification = new Notification(newMovie.getName(), ADDED_MOVIE);

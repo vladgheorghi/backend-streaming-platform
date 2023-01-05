@@ -7,11 +7,13 @@ import output.OutputHandler;
 import user.Handler;
 import user.User;
 
-import static database.Constant.*;
+import static database.Constant.ADD_MOVIE;
+import static database.Constant.DELETE_MOVIE;
 
 public class DatabaseActions {
-    public static void databaseAction(Database mainDatabase, Handler handler, ArrayNode output,
-                                      ObjectMapper objectMapper) {
+    /***/
+    public static void databaseAction(final Database mainDatabase, final Handler handler,
+                                      final ArrayNode output, final ObjectMapper objectMapper) {
 
         if (handler.getCurrentAction().getFeature().equals(ADD_MOVIE)) {
             addMovie(mainDatabase, handler, output, objectMapper);
@@ -23,8 +25,9 @@ public class DatabaseActions {
         }
     }
 
-    public static void addMovie(Database mainDatabase, Handler handler, ArrayNode output,
-                                ObjectMapper objectMapper) {
+    /***/
+    public static void addMovie(final Database mainDatabase, final Handler handler,
+                                final ArrayNode output, final ObjectMapper objectMapper) {
 
         Movie newMovie = handler.getCurrentAction().getAddedMovie();
 
@@ -43,8 +46,9 @@ public class DatabaseActions {
         notifyUsers.update(newMovie, mainDatabase);
     }
 
-    public static void deleteMovie(Database mainDatabase, Handler handler, ArrayNode output,
-                                   ObjectMapper objectMapper) {
+    /***/
+    public static void deleteMovie(final Database mainDatabase, final Handler handler,
+                                   final ArrayNode output, final ObjectMapper objectMapper) {
         String deletedMovieName = handler.getCurrentAction().getDeletedMovie();
         Movie deletedMovie = null;
 

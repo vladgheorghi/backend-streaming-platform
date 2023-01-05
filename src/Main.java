@@ -10,9 +10,6 @@ import action.ActionHandler;
 import output.OutputHandler;
 
 import page.PageInitialization;
-import page.PageChange;
-import page.Page;
-import page.PageAccessFeature;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -21,14 +18,14 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import database.Database;
 
 import user.Handler;
-import user.Notification;
 import user.Recommendation;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static database.Constant.*;
+import static database.Constant.HOMEPAGE_UNLOGGED;
+import static database.Constant.ACCOUNT_PREMIUM;
 
 public class Main {
     /**@param args -> [0] absolute path of JSON input file
@@ -61,7 +58,8 @@ public class Main {
         }
 
         if (handler.getCurrentUser() != null) {
-            if (handler.getCurrentUser().getCredentials().getAccountType().equals(ACCOUNT_PREMIUM)) {
+            if (handler.getCurrentUser().getCredentials()
+                    .getAccountType().equals(ACCOUNT_PREMIUM)) {
                 Recommendation.premiumUserRecommend(mainDatabase, handler);
                 output.add(OutputHandler.outputHandler(handler, false, objectMapper));
             }
