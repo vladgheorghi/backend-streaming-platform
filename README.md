@@ -94,8 +94,6 @@ a new movie into the database (part of the **_Observer Design Pattern_**)
     * if a movie list needs to be returned, the program can go to the `GetMovie` class
   * if action type is **on page**, goes to `PageAccessFeature` class
     * handles all on page feature cases and for each feature the program accesses a method inside `PageFeatures` class
-  * if action type is **subscribe**, goes to `GenreSubscribe` class
-    * user subscribes to the selected genre if possible
   * if action type is **database**, goes to `DatabaseActions` class
     * a movie can be added into the database, so `addMovie()` is called
     * a movie can be removed from the database so `deleteMovie()` is called
