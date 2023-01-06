@@ -69,6 +69,7 @@ public class CreatePage implements VisitorCreatePage {
         features.add(WATCH);
         features.add(LIKE);
         features.add(RATE);
+        features.add(SUBSCRIBE);
 
         page.setFeatures(features);
     }

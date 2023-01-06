@@ -7,16 +7,7 @@ import database.Database;
 
 import user.Handler;
 
-import static database.Constant.LOGIN;
-import static database.Constant.REGISTER;
-import static database.Constant.SEARCH;
-import static database.Constant.FILTER;
-import static database.Constant.PURCHASE;
-import static database.Constant.WATCH;
-import static database.Constant.LIKE;
-import static database.Constant.RATE;
-import static database.Constant.BUY_PREMIUM_ACCOUNT;
-import static database.Constant.BUY_TOKENS;
+import static database.Constant.*;
 
 /**
  * @class class for accessing a feature in the page
@@ -46,6 +37,7 @@ public final class PageAccessFeature {
             case BUY_PREMIUM_ACCOUNT -> PageFeatures.buyPremiumAccount(handler,
                     output, objectMapper);
             case BUY_TOKENS -> PageFeatures.buyTokens(handler, output, objectMapper);
+            case SUBSCRIBE -> GenreSubscribe.subscribe(handler, output, objectMapper);
             default -> { }
         }
     }

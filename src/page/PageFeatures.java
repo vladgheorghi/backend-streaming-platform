@@ -270,8 +270,9 @@ public final class PageFeatures {
         // adds the movie to the 'watchedMovies' list if not already watched
         if (!handler.getCurrentUser().getWatchedMovies().contains(currentMovie)) {
             handler.getCurrentUser().getWatchedMovies().add(currentMovie);
-            output.add(OutputHandler.outputHandler(handler, false, objectMapper));
         }
+
+        output.add(OutputHandler.outputHandler(handler, false, objectMapper));
     }
 
     /**

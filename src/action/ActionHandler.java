@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import database.Database;
 import database.DatabaseActions;
 import output.OutputHandler;
-import page.GenreSubscribe;
 import page.Page;
 import page.PageAccessFeature;
 import page.PageChange;
@@ -15,7 +14,6 @@ import static database.Constant.CHANGE_PAGE;
 import static database.Constant.ON_PAGE;
 import static database.Constant.DATABASE;
 import static database.Constant.BACK;
-import static database.Constant.SUBSCRIBE;
 
 /**
  * @class class for handling each action case
@@ -46,9 +44,6 @@ public class ActionHandler {
 
                 // outputs error in JSON file if page does not have this feature
                 output.add(OutputHandler.outputHandler(handler, true, objectMapper));
-                break;
-            case SUBSCRIBE: // subscribe to a genre in the see details page
-                GenreSubscribe.subscribe(handler, output, objectMapper);
                 break;
             case DATABASE:
                 DatabaseActions.databaseAction(mainDatabase, handler, output, objectMapper);
