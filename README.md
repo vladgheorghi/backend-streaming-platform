@@ -1,5 +1,5 @@
 ##### 16th December 2022
-# <ins> OOP Project - Phase 2 (POO TV) </ins>
+# <ins> Back-end Streaming Platform </ins>
 ### Doru-Vlad Gheorghiu
 #### Faculty of Automatic Control and Computer Science (Year 2)
 
